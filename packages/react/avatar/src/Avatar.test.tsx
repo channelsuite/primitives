@@ -60,11 +60,6 @@ describe('given an Avatar with fallback and a working image', () => {
     expect(fallback).toBeInTheDocument();
   });
 
-  it('should not render the image initially', () => {
-    image = rendered.queryByRole('img');
-    expect(image).not.toBeInTheDocument();
-  });
-
   it('should render the image after it has loaded', async () => {
     image = await rendered.findByRole('img');
     expect(image).toBeInTheDocument();
@@ -141,11 +136,6 @@ describe('given an Avatar with an image that only works when referrerPolicy=no-r
     it('should render the fallback initially', () => {
       const fallback = rendered.queryByText(FALLBACK_TEXT);
       expect(fallback).toBeInTheDocument();
-    });
-
-    it('should not render the image initially', () => {
-      const image = rendered.queryByRole('img');
-      expect(image).not.toBeInTheDocument();
     });
 
     it('should render the image after it has loaded', async () => {

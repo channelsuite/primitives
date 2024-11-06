@@ -40,7 +40,7 @@ describe('Tooltip', () => {
     const trigger = screen.getByText('Tooltip Trigger');
     expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
 
-    userEvent.hover(trigger);
+    await userEvent.hover(trigger);
     await waitFor(() => {
       // Get the first instance of the tooltip content because the second is
       // the visually hidden primitive.
@@ -66,14 +66,14 @@ describe('Tooltip', () => {
     const trigger = screen.getByText('Tooltip Trigger');
     expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
 
-    userEvent.hover(trigger);
+    await userEvent.hover(trigger);
     await waitFor(() => {
       // Get the first instance of the tooltip content because the second is
       // the visually hidden primitive.
       expect(screen.queryAllByText('Tooltip Content')[0]).toBeVisible();
     });
 
-    userEvent.click(trigger);
+    await userEvent.click(trigger);
     await waitFor(() => {
       expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
     });
